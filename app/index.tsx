@@ -97,16 +97,22 @@ function Dice(props) {
 
 
 export default function Index() {
-    const [N, setN] = useState(1);
+    const [N1, setN1] = useState(1);
+    const [N2, setN2] = useState(1);
     return (
         <View style={{flex:1}}>
-            <Text style={st_text}>Dice</Text>
+            <Text style={st_text}>Double Dice</Text>
+            <Text style={st_text}>{N1 + N2}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <Dice num={N}/>
+                <Dice num={N1}/>
+                <Dice num={N2}/>
             </View>
             <View style={{marginHorizontal: 100, marginVertical: 30}}>
                 <Button title="Roll" onPress={
-                    function() {setN(Math.floor(Math.random() *6 +1)); }}/>
+                    function() {
+                        setN1(Math.floor(Math.random() *6 +1));
+                        setN2(Math.floor(Math.random() *6 +1));}
+                    }/>
             </View>
         </View>
     );
