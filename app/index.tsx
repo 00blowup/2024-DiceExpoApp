@@ -19,36 +19,82 @@ var st_circle = {
 
 var st_dice = {
     backgroundColor: 'rgb(255, 240, 200)',
-    padding: 10
+    padding: 10,
+    margin: 10
 };
 
-function Dice() {
-    return (
-        <View style={st_dice}>
-            <View style={{flexDirection: 'row'}}><Circle/><Circle/><Circle/></View>
-            <View style={{flexDirection: 'row'}}><Circle/><Circle/><Circle/></View>
-            <View style={{flexDirection: 'row'}}><Circle/><Circle/><Circle/></View>
-        </View>
-    )
+function Dice(props) {
+    if (props.num == 1) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Circle/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Blank/></View>
+                </View>
+            );
+    }
+    else if (props.num == 2) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Circle/></View>
+                </View>
+            );
+    }
+    else if (props.num == 3) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Circle/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Circle/></View>
+                </View>
+            );
+    }
+    else if (props.num == 4) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Blank/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                </View>
+            );
+    }
+    else if (props.num == 5) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                    <View style={{flexDirection: 'row'}}><Blank/><Circle/><Blank/></View>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                </View>
+            );
+    }
+    else if (props.num == 6) {
+        return (
+                <View style={st_dice}>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                    <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
+                </View>
+            );
+    }
+    else {  /* 예외 처리 */
+        return (
+            <View>
+                <Text>wrong props!</Text>
+            </View>
+            );
+    }
 }
 
-function Dice6() {
-    return (
-        <View style={st_dice}>
-            <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
-            <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
-            <View style={{flexDirection: 'row'}}><Circle/><Blank/><Circle/></View>
-        </View>
-    )
-}
 
 
 export default function Index() {
   return (
     <View style={{flex:1, alignItems:'center'}}>
-        <Dice/>
-        <View style={{height:20}}/>
-        <Dice6/>
+        <Dice num={1}/>
+        <Dice num={4}/>
+        <Dice num={7}/>
     </View>
   );
 }
