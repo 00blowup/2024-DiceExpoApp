@@ -1,4 +1,5 @@
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
+import { useState } from "react";
 
 function Circle() {
     return <View style={st_circle} />;
@@ -22,6 +23,12 @@ var st_dice = {
     padding: 10,
     margin: 10
 };
+
+var st_text = {
+    textAlign: 'center',
+    fontSize: 20,
+    margin: 5
+}
 
 function Dice(props) {
     if (props.num == 1) {
@@ -90,11 +97,17 @@ function Dice(props) {
 
 
 export default function Index() {
-  return (
-    <View style={{flex:1, alignItems:'center'}}>
-        <Dice num={1}/>
-        <Dice num={4}/>
-        <Dice num={7}/>
-    </View>
-  );
+    const [N, setN] = useState(1);
+    return (
+        <View style={{flex:1}}>
+            <Text style={st_text}>Dice</Text>
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <Dice num={N}/>
+            </View>
+            <View style={{marginHorizontal: 100, marginVertical: 30}}>
+                <Button title="Roll" onPress={
+                    function() {setN(Math.floor(Math.random() *6 +1)); }}/>
+            </View>
+        </View>
+    );
 }
